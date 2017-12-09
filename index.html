@@ -9,10 +9,10 @@
   </head>
 
   <body ng-app="githubViewer">
-    <div ng-controller="MainController">
+    <div ng-controller="MainController" class="content">
       <h1>{{title}}</h1>
 
-      {{countdown}}
+      <div ng-if="countdown">Auto search in {{countdown}}</div>
 
       <form ng-submit="search()">
         <input type="search" required placeholder="Username" ng-model="username" />
