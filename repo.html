@@ -1,0 +1,16 @@
+<a href="#/user/{{username}}">Repos list for {{username}}</a>
+<dl>
+  <dt>Repo</dt>
+  <dd>{{repo.name}}</dd>
+  <dt>Open issues</dt>
+  <dd>{{repo.open_issues_count}}</dd>
+  <dt>Contributors</dt>
+  <dd>
+    <ul>
+      <li ng-repeat="contributor in contributors">
+        {{contributor.login}}
+        <img ng-src="{{contributor.avatar_url}}" title="{{contributor.login}}">
+      </li>
+    </ul>
+  </dd>
+</dl>

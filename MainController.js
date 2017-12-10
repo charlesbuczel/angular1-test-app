@@ -3,10 +3,10 @@
 
   const MainController = function($scope, $interval, $location) {
     $scope.username = "angular";
-    $scope.countdown = 5;
+    $scope.countdown = 10;
     let countdownInterval = $interval(function () {
       if (--$scope.countdown < 1) {
-        //$scope.search();
+        $scope.search();
       }
     }, 1000, $scope.countdown);
 
