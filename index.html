@@ -3,62 +3,19 @@
 
   <head>
     <script data-require="angular.js@*" data-semver="1.3.0-beta.5" src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
+    <script data-require="angular-route@1.2.14" data-semver="1.2.14" src="https://code.angularjs.org/1.2.14/angular-route.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script src="app.js"></script>
+    <script src="MainController.js"></script>
+    <script src="UserController.js"></script>
     <script src="github.js"></script>
   </head>
 
   <body ng-app="githubViewer">
-    <div ng-controller="MainController" class="content">
-      <h1>{{title}}</h1>
-
-      <div ng-if="countdown">Auto search in {{countdown}}</div>
-
-      <form ng-submit="search()">
-        <input type="search" required placeholder="Username" ng-model="username" />
-        <input type="submit" value="search"/>
-      </form>
-
-      <br/><br/>
-
-      <div ng-show="user">
-        <div id="userdetails">Name: {{user.name}}</div>
-        <div>Location: {{user.login}}</div>
-        <img ng-src="{{user.avatar_url}}" title="{{user.login}}">
-
-        <br />
-        <br /> Order
-        <select ng-model="repoSortOrder">
-          <option value="+name">Name</option>
-          <option value="stargazers_count">Stars</option>
-          <option value="+language">Language</option>
-        </select>
-        Limit to
-        <select ng-model="repoLimitDisplay">
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="25">25</option>
-          <option value="50">50</option>
-        </select>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Language</th>
-              <th>Stars</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="repo in user.repos | limitTo:repoLimitDisplay | orderBy:repoSortOrder">
-              <td>{{repo.name}}</td>
-              <td>{{repo.language}}</td>
-              <td>{{repo.stargazers_count | number}}</td>
-            </tr>
-          </tbody>
-        </table>
-
-      </div>
-    </div>
+    <section>
+      <h1>Github Viewer</h1>
+      <div ng-view></div>
+    </section>
   </body>
 
 </html>

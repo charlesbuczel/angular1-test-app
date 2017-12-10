@@ -1,0 +1,36 @@
+<div>
+  <h2>{{user.name}}</h2>
+  <a href="#/main">Back to search</a>
+  {{error}}
+  <img ng-src="{{user.avatar_url}}" title="{{user.login}}">
+  <br /><br />
+  Order
+  <select ng-model="repoSortOrder">
+    <option value="+name">Name</option>
+    <option value="stargazers_count">Stars</option>
+    <option value="+language">Language</option>
+  </select>
+  Limit to
+  <select ng-model="repoLimitDisplay">
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="25">25</option>
+    <option value="50">50</option>
+  </select>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Language</th>
+        <th>Stars</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="repo in repos | limitTo:repoLimitDisplay | orderBy:repoSortOrder">
+        <td>{{repo.name}}</td>
+        <td>{{repo.language}}</td>
+        <td>{{repo.stargazers_count | number}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
